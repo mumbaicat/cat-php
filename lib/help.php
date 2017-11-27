@@ -57,7 +57,7 @@ function page($array, $page, $count, $order = 0) {
  * @param  array  $data 附加数据
  * @return string       
  */
-function makeReturnJson($code,$msg,$data=[]){
+function makeReturnJson($code,$msg,$data=''){
 	$return = array(
 		'code'=>$code,
 		'msg'=>$msg,
@@ -65,6 +65,24 @@ function makeReturnJson($code,$msg,$data=[]){
 	);
 	header("Content-type: text/json; charset=utf-8");
 	// return json_encode($return,JSON_UNESCAPED_UNICODE);
+	exit(json_encode($return,JSON_UNESCAPED_UNICODE));
+}
+
+/**
+ * 生成Layui的智能表格的Json
+ * 先获取$_GET['page'] 和 $_GET['limit'] ,然后进行page分页
+ * @param  array $data  分页后的数组
+ * @param  integer $count 总个数
+ * @return void        
+ */
+function makeLayuiTable($data,$count){
+	$return =[
+		'code'=>0,
+		'msg'=>'获取成功',
+		'count'=>$count,
+		'data'=>$data,
+	];
+	header("Content-type: text/json; charset=utf-8");
 	exit(json_encode($return,JSON_UNESCAPED_UNICODE));
 }
 

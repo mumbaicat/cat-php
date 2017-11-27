@@ -14,6 +14,8 @@ $CONFIG = require 'lib/config.php';
 if($CONFIG['DEBUG']==true){
 	$stratTime   = microtime(true);
 	$startMemory = memory_get_usage();
+	// ini_set("display_errors", "On");
+	// error_reporting(E_ALL | E_STRICT);
 	// 开启错误提示什么的
 }else{
 	// 关闭错误提示什么的
