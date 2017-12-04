@@ -72,14 +72,14 @@ function makeReturnJson($code,$msg,$data=''){
  * 生成Layui的智能表格的Json
  * 先获取$_GET['page'] 和 $_GET['limit'] ,然后进行page分页
  * @param  array $data  分页后的数组
- * @param  integer $count 总个数
+ * @param  integer $count 全部数组
  * @return void        
  */
 function makeLayuiTable($data,$count){
 	$return =[
 		'code'=>0,
 		'msg'=>'获取成功',
-		'count'=>$count,
+		'count'=>count($count),
 		'data'=>$data,
 	];
 	header("Content-type: text/json; charset=utf-8");
