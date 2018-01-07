@@ -1,4 +1,4 @@
-<?php 
+<?php
 class User  extends Controller{
 
 	private $userData;
@@ -9,9 +9,9 @@ class User  extends Controller{
 		$passAction = array('login','register');
 		if(!in_array($this->request->action(),$passAction)){
 			// 检测用户登陆
-			$this->userData = checkUserLogin();
+			$this->userData = check_user_login();
 			if(!$this->userData){
-				return makeReturnJson(500,'用户尚未登录');
+				return make_return_json(500,'用户尚未登录');
 			}
 			$this->uid = $this->userData['uid'];
 		}
@@ -30,12 +30,12 @@ class User  extends Controller{
 	// 注销
 	public function logout(){
 		cookie('usertoken',null);
-		return makeReturnJson(200,'注销成功');
+		return make_return_json(200,'注销成功');
 	}
 
 	public function lists(){
 		// Layui的智能表格
- 
+
 		$page = filter($_GET['page']);
 		$limit = filter($_GET['limit']);
 
@@ -46,7 +46,7 @@ class User  extends Controller{
 		$count = count($lists);
 		$data = page($lists,$page,$limit);
 
-		for ($i=0; $i < count($data); $i++) { 
+		for ($i=0; $i < count($data); $i++) {
 			// $data[$i]['create_time'] = date('Y-m-d H:i:s',$data[$i]['create_time']);
 		}
 
